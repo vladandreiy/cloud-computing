@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: django-migrations
+spec:
+  template:
+    spec:
+      containers:
+        - name: django
+          image: vladandreiy/product_manager:v1
+          command: ['python3', 'manage.py', 'migrate']
+          env:
+            - name: POSTGRES_USER
+              value: "ccstudent"
+            - name: POSTGRES_PASSWORD
+              value: "123"
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: trust
+
+            - name: POSTGRES_NAME
+              value: ccdb
+
+      restartPolicy: Never
+  backoffLimit: 5

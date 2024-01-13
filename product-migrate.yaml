@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: product-migrate
+  namespace: product
+spec:
+  template:
+    spec:
+      containers:
+        - name: webregi-v2-app
+          image: vladandreiy/product-manager:v1
+          imagePullPolicy: Always
+          command: ["/bin/sh","-c"]
+          args: ["python business_logic/manage.py makemigrations && python business_logic/manage.py migrate"]
+          env:
+            - name: POSTGRES_USER
+              value: "ccstudent"
+            - name: POSTGRES_PASSWORD
+              value: "123"
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: trust
+            - name: POSTGRES_HOST
+              value: "db"
+      restartPolicy: Never
+  backoffLimit: 3

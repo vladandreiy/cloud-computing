@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-8g$gh)_^jssw*81lh4znr28ldx80v!*mw+t$+-h%tht*oe7!0!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product',
     'rest_framework',
-    'rest_framework_swagger',
     'drf_yasg',
 ]
 
@@ -79,11 +79,14 @@ WSGI_APPLICATION = 'business_logic.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('POSTGRES_DB', 'ccdb'),
+        'USER': os.getenv('POSTGRES_USER', 'ccstudent'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', '123'),
+        'HOST': os.getenv('POSTGRES_HOST', 'db'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgadmin-servers-config
+  namespace: product
+data:
+  servers.json: |-
+    {
+      "Servers": {
+        "1": {
+          "Name": "My PostgreSQL Server",
+          "Group": "Servers",
+          "Host": "db",
+          "Port": 5432,
+          "MaintenanceDB": "ccdb",
+          "Username": "ccstudent",
+          "SSLMode": "prefer",
+          "PassFile": "/pgadmin4/pgadmin4.db"
+        }
+      }
+    }

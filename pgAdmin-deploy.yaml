@@ -30,4 +30,9 @@ spec:
           ports:
             - containerPort: 80
               name: pgadminport
-         
+          volumeMounts:
+            - name: pgadmin-data
+              mountPath: /pgadmin4
+            - name: pgadmin-servers-config
+              mountPath: /pgadmin4/servers.json
+              subPath: servers.json

@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: portainer
+  labels:
+    name: portainer-service
+    app: portainer
+  namespace: portainer
 spec:
   replicas: 1
   selector:

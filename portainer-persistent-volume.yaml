@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: portainer-pv
+  namespace: portainer
+  labels:
+    app.kubernetes.io/instance: portainer
+    app.kubernetes.io/name: portainer
+    app.kubernetes.io/version: ce-latest-ee-2.19.4
+    io.portainer.kubernetes.application.stack: portainer
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: gp2
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  hostPath:
+    path: "/mnt/data"

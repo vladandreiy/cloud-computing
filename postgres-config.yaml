@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-init-script
+data:
+  init.sql: |
+    CREATE DATABASE ccdb;
+    CREATE USER ccstudent WITH ENCRYPTED PASSWORD '123';
+    GRANT ALL PRIVILEGES ON DATABASE ccdb TO ccstudent;

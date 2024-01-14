@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: "ccdb"
+  POSTGRES_USER: "ccstudent"
+  POSTGRES_PASSWORD: "123"
+  POSTGRES_HOST: "db"

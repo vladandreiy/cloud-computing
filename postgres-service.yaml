@@ -4,15 +4,12 @@ metadata:
   name: db
   labels:
     name: postgres-service
-    app: webregi-v2-app
-  namespace: product
+    app: postgres
 spec:
-  type: NodePort
   ports:
     - protocol: TCP
       port: 5432
       targetPort: 5432
-      nodePort: 30432
   selector:
     name: postgres-pod
-    app: webregi-v2-app
+    app: postgres

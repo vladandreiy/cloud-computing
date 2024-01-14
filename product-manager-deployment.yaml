@@ -4,7 +4,6 @@ metadata:
   name: product-manager-deployment
   labels:
     app: product-manager
-  namespace: product
 spec:
   replicas: 1
   selector:

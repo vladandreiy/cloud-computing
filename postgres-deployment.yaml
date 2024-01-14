@@ -2,18 +2,16 @@ apiVersion: v1
 kind: Pod
 metadata:
  name: db-pod
- namespace: product
  labels:
    app: postgres
 spec:
  containers:
-   - image: postgres:10.4
+   - image: vladandreiy/postgres:v1
+     imagePullPolicy: Always
      name: postgres
      volumeMounts:
      - name: myvol
        mountPath: /etc/config
-     - name: db-init-script
-       mountPath: /docker-entrypoint-initdb.d/
      ports:
        - containerPort: 5432
      env:
@@ -29,6 +27,3 @@ spec:
    - name: myvol
      persistentVolumeClaim:
        claimName: postgress-pvc
-   - name: db-init-script
-     configMap:
-       name: db-init-script

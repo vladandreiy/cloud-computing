@@ -16,8 +16,5 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: gp2
-  mountOptions:
-    - hard
-    - nfsvers=4.1
   hostPath:
     path: "/mnt/data"

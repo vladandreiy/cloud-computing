@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-from-auth
-  namespace: product
+  name: allow-from-default
+  namespace: auth
 spec:
   podSelector: {}
   ingress:
   - from:
     - namespaceSelector:
-      matchLabels:
-        name: auth
+       matchLabels:
+        name: default

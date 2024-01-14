@@ -4,6 +4,7 @@ metadata:
   name: authentication-deployment
   labels:
     app: authentication
+  namespace: auth
 spec:
   replicas: 1
   selector:
@@ -16,6 +17,7 @@ spec:
     spec:
       containers:
       - name: authentication
-        image: vladandreiy/authentication_service:v1
+        image: vladandreiy/authentication:v1
+        imagePullPolicy: Always
         ports:
         - containerPort: 7000

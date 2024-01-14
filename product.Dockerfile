@@ -13,4 +13,4 @@ COPY business_logic /business_logic/
 
 COPY create-dbs.sh /docker-entrypoint-initdb.d/
 
-CMD python manage.py makemigrations; python manage.py migrate; manage.py runserver 0.0.0.0:8000
+CMD python manage.py makemigrations; python manage.py migrate; python manage.py runserver 0.0.0.0:8000

@@ -4,7 +4,6 @@ metadata:
   name: authentication-deployment
   labels:
     app: authentication
-  namespace: auth
 spec:
   replicas: 1
   selector:

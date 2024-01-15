@@ -4,6 +4,7 @@ metadata:
  name: db-pod
  labels:
    app: postgres
+   name: postgres-pod
 spec:
  containers:
    - image: vladandreiy/postgres:v1

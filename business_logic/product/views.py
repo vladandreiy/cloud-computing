@@ -27,7 +27,7 @@ class LoginView(APIView):
         email = request.data.get('email')
         password = request.data.get('password')
 
-        url = "http://127.0.0.1:7000/login/"
+        url = "http://authentication-service.auth:7000/login/"
 
         credentials = {
             "email": email,
@@ -66,7 +66,7 @@ class GetMethod(viewsets.ModelViewSet):
         token = request.session['token']
 
         headers = {'Authorization': token}
-        response = requests.get(f'http://127.0.0.1:7000/verify/', headers=headers)
+        response = requests.get(f'http://authentication-service.auth:7000/verify/', headers=headers)
         if response.status_code != 200:
             return Response({'error': 'User not authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
     
